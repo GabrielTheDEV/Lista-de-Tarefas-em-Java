@@ -19,7 +19,9 @@ public class TaskService {
         }
     }
     public void changeDescription(int index , String newDesc) {
-      //...
+        for(int i = 0; i < index; i++) {
+
+        }
     }
     public void doneTask() {
         //...
