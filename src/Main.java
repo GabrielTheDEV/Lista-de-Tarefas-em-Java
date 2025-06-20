@@ -8,6 +8,7 @@ public class Main {
         System.out.println("projeto criado por: GabrielTheDEV");
         System.out.println("Github : ~");
         System.out.println("Repositorio : ~");
+
         while(op != false){
             int option;
             System.out.println("==== LISTA DE TAREFA ====");
@@ -49,7 +50,8 @@ public class Main {
                     break;
                 case 2:
                     System.out.println(" ");
-                    System.out.println("==== LISTA DE TAREFA ====");
+                    System.out.println("==== CRIAR TAREFA ====");
+                    System.out.println("O que você pretende realizar?");
 
                     break;
                 case 3: op = false;
