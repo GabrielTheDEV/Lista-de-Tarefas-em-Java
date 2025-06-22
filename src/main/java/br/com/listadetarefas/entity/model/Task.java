@@ -1,4 +1,4 @@
-package br.com.listadetarefas.entity;
+package br.com.listadetarefas.entity.model;
 
 public class Task {
     private int id;
