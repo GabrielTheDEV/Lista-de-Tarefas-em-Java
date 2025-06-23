@@ -22,13 +22,20 @@ public class TaskDao {
             }
             System.out.println(" ");
         }catch (SQLException e){
-            System.out.println(e.getMessage());
+            System.out.println("*ERRO* :" + e.getMessage());
         } catch (NullPointerException e){
             System.out.println(e.getMessage());
         }
     }
 
-    public void getTask(){}
+    public void getTask(){
+        String command = "SELECT * FROM tasks";
+        try(Connection conn = DatabaseConnection.connect()) {
+            System.out.println("funcionando");
+        }catch (SQLException e){
+            System.out.println("*ERROR* :" + e.getMessage());
+        }
+    }
     public void changeTask(){}
     public void removeTask(){}
 }

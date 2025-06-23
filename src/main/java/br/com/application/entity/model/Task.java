@@ -5,7 +5,8 @@ public class Task {
     private String description;
     private boolean isCompleted;
 
-    public Task() {}
+    public Task() {
+    }
 
     public Task(String description ) {
         this.description = description;
@@ -22,7 +23,6 @@ public class Task {
     }
 
     //Getter e Setter
-
     public int getId() {
         return id;
     }
