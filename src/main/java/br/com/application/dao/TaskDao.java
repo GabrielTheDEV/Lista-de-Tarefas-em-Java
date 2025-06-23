@@ -4,6 +4,7 @@ import br.com.application.dao.service.DatabaseConnection;
 import br.com.application.entity.model.Task;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -36,6 +37,27 @@ public class TaskDao {
             System.out.println("*ERROR* :" + e.getMessage());
         }
     }
-    public void changeTask(){}
-    public void removeTask(){}
+    public void changeTask(){
+        String command = "ALTER TABLE ";
+    }
+
+    public void removeTask(Task task){
+        String command = "DELETE FROM tasks WHERE = " + task.getId();
+
+        try(Connection conn = DatabaseConnection.connect();
+            PreparedStatement pstmt = conn.prepareStatement(command)) {
+            pstmt.setInt(1, task.getId());
+            int rowsAffected = pstmt.executeUpdate();
+
+            if(rowsAffected > 0){
+                System.out.println("TAREFA APAGADA");
+            } else {
+                System.out.println("Nenhuma tarefa encontrada com esse ID");
+            }
+        }catch (SQLException e){
+            System.out.println("*ERROR* :" + e.getMessage());
+        }catch (NullPointerException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

@@ -12,10 +12,6 @@ public class Task {
         this.description = description;
     }
 
-    public Task(String description , boolean isCompleted) {
-        this.description = description;
-        this.isCompleted = isCompleted;
-    }
     public Task(int id, String description , boolean isCompleted) {
         this.id = id;
         this.description = description;

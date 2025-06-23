@@ -34,6 +34,34 @@ public class Menu {
         System.out.println("========= SUAS TAREFAS ===========");
         System.out.println(" ");
 
+        System.out.println(" ");
+        System.out.println("1. Editar tarefa");
+        System.out.println("2. Marcar tarefa");
+        System.out.println("3. Deletar tarefa");
+        System.out.println("4. voltar para o menu principal");
+        int option = sc.nextInt();
+        switch (option){
+            case 1 -> System.out.println("  ");
+            case 2 -> System.out.println(" ");
+            default -> System.out.println("Opção invalida, digite uma opção valida ");
+        }
+    }
+    public static void x(){}
+    public static void deleteTaskMenu(){
+        System.out.println("TEM CERTEZA QUE DESEJA DELETAR? ");
+        System.out.println("1. Sim");
+        System.out.println("2. Não");
+        int option = sc.nextInt();
+        switch (option){
+            case 1 -> System.out.println(" ");
+            case 2 -> System.out.println(" ");
+            default ->{
+                System.out.println("Opção invalida, digite uma opção valida ");
+                deleteTaskMenu();
+            }
+            }
+
+        }
     }
 
 }
