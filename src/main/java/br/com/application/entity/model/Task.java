@@ -1,4 +1,4 @@
-package br.com.listadetarefas.entity.model;
+package br.com.application.entity.model;
 
 public class Task {
     private int id;
@@ -6,6 +6,10 @@ public class Task {
     private boolean isCompleted;
 
     public Task() {}
+
+    public Task(String description ) {
+        this.description = description;
+    }
 
     public Task(String description , boolean isCompleted) {
         this.description = description;
