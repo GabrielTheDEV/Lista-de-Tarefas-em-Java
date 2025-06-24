@@ -28,6 +28,7 @@ public class Menu {
         String text = sc.nextLine();
         dao.addTask( new Task(text));
         System.out.println("~~~~~~~~ Tarefa criada ~~~~~~~~~~");
+        System.out.println("--- O que deseja fazer agora? ---");
         mainMenu();
     }
     public static void taskListMenu(){
@@ -41,26 +42,42 @@ public class Menu {
         System.out.println("4. voltar para o menu principal");
         int option = sc.nextInt();
         switch (option){
-            case 1 -> System.out.println("  ");
+            case 1 -> changeTaskMenu();
             case 2 -> System.out.println(" ");
+            case 3 -> deleteTaskMenu();
             default -> System.out.println("Opção invalida, digite uma opção valida ");
         }
     }
-    public static void x(){}
+    public static void changeTaskMenu(){
+        int index ;
+        String newValue;
+
+        System.out.println("Qual tarefa deseja alterar ? ( idetifique pelo indice )");
+        index = sc.nextInt();
+        System.out.println("Nova descrição :");
+        sc.nextLine();
+        newValue = sc.nextLine();
+
+        dao.changeTask(index, newValue);
+    }
     public static void deleteTaskMenu(){
         System.out.println("TEM CERTEZA QUE DESEJA DELETAR? ");
         System.out.println("1. Sim");
         System.out.println("2. Não");
         int option = sc.nextInt();
         switch (option){
-            case 1 -> System.out.println(" ");
-            case 2 -> System.out.println(" ");
-            default ->{
+            case 1 :
+                int index;
+                System.out.println("Qual tarefa deseja alterar ? ( idetifique pelo indice )");
+                index = sc.nextInt();
+                dao.removeTask(index);
+                break;
+            case 2 :
+                mainMenu();
+                break;
+            default :
                 System.out.println("Opção invalida, digite uma opção valida ");
-                deleteTaskMenu();
-            }
-            }
-
+                taskListMenu();
         }
     }
 

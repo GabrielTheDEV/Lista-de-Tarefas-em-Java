@@ -37,16 +37,23 @@ public class TaskDao {
             System.out.println("*ERROR* :" + e.getMessage());
         }
     }
-    public void changeTask(){
-        String command = "ALTER TABLE ";
-    }
-
-    public void removeTask(Task task){
-        String command = "DELETE FROM tasks WHERE = " + task.getId();
+    public void changeTask(int id, String newValue){
+        String command = "UPDATE tasks SET descrip = '" + newValue +"' WHERE id =" + id;
 
         try(Connection conn = DatabaseConnection.connect();
             PreparedStatement pstmt = conn.prepareStatement(command)) {
-            pstmt.setInt(1, task.getId());
+                System.out.println("Tarefa alterada");
+        }catch(SQLException err){
+            System.out.println("*ERROR* : " + err.getMessage());
+        }
+    }
+
+    public void removeTask(int id){
+        String command = "DELETE FROM tasks WHERE = " + id;
+
+        try(Connection conn = DatabaseConnection.connect();
+            PreparedStatement pstmt = conn.prepareStatement(command)) {
+            pstmt.setInt(1, id);
             int rowsAffected = pstmt.executeUpdate();
 
             if(rowsAffected > 0){
