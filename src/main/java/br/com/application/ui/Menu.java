@@ -59,6 +59,7 @@ public class Menu {
         newValue = sc.nextLine();
 
         dao.changeTask(index, newValue);
+        mainMenu();
     }
     public static void deleteTaskMenu(){
         System.out.println("TEM CERTEZA QUE DESEJA DELETAR? ");
@@ -71,6 +72,7 @@ public class Menu {
                 System.out.println("Qual tarefa deseja alterar ? ( idetifique pelo indice )");
                 index = sc.nextInt();
                 dao.removeTask(index);
+                mainMenu();
                 break;
             case 2 :
                 mainMenu();

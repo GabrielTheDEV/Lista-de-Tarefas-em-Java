@@ -47,26 +47,22 @@ public class TaskDao {
     public void changeTask(int id, String newValue){
         String command = "UPDATE tasks SET descrip = '" + newValue +"' WHERE id =" + id;
 
-        try(Connection conn = DatabaseConnection.connect();
-            PreparedStatement pstmt = conn.prepareStatement(command)) {
+        try(Connection conn = DatabaseConnection.connect()) {
+            try( Statement stmt = conn.createStatement()){
+                stmt.executeUpdate(command);
                 System.out.println("Tarefa alterada");
+            }
         }catch(SQLException err){
             System.out.println("*ERROR* : " + err.getMessage());
         }
     }
 
     public void removeTask(int id){
-        String command = "DELETE FROM tasks WHERE = " + id;
+        String command = "DELETE FROM tasks WHERE id = " + id;
 
-        try(Connection conn = DatabaseConnection.connect();
-            PreparedStatement pstmt = conn.prepareStatement(command)) {
-            pstmt.setInt(1, id);
-            int rowsAffected = pstmt.executeUpdate();
-
-            if(rowsAffected > 0){
-                System.out.println("TAREFA APAGADA");
-            } else {
-                System.out.println("Nenhuma tarefa encontrada com esse ID");
+        try(Connection conn = DatabaseConnection.connect()){
+            try(Statement stmt = conn.createStatement()) {
+                stmt.executeUpdate(command);
             }
         }catch (SQLException e){
             System.out.println("*ERROR* :" + e.getMessage());
