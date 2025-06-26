@@ -11,7 +11,10 @@ public class Task {
     public Task(String description ) {
         this.description = description;
     }
-
+    public Task(int id, String description) {
+        this.id = id;
+        this.description = description;
+    }
     public Task(int id, String description , boolean isCompleted) {
         this.id = id;
         this.description = description;
@@ -36,5 +39,8 @@ public class Task {
     }
     public void setIsCompleted(boolean completed){
         this.isCompleted = completed;
+    }
+    public String toString(){
+        return "[ " +this.id+"# " +this.description+" -> status = " + (isCompleted ? "CONCLUIDO" : "NÃO CONCLUIDO"+" ]");
     }
 }

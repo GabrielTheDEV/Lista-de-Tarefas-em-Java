@@ -34,7 +34,7 @@ public class Menu {
     public static void taskListMenu(){
         System.out.println("========= SUAS TAREFAS ===========");
         System.out.println(" ");
-
+        dao.getTask();
         System.out.println(" ");
         System.out.println("1. Editar tarefa");
         System.out.println("2. Marcar tarefa");

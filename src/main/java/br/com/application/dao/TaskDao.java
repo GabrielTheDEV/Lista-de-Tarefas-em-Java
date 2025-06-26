@@ -3,10 +3,7 @@ package br.com.application.dao;
 import br.com.application.dao.service.DatabaseConnection;
 import br.com.application.entity.model.Task;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class TaskDao {
 
@@ -31,8 +28,18 @@ public class TaskDao {
 
     public void getTask(){
         String command = "SELECT * FROM tasks";
-        try(Connection conn = DatabaseConnection.connect()) {
-            System.out.println("funcionando");
+
+        try(Connection conn = DatabaseConnection.connect();
+            PreparedStatement pstmt = conn.prepareStatement(command)) {
+
+            ResultSet result = pstmt.executeQuery();
+            while(result.next()){
+                int id = result.getInt("id");
+                String descrip = result.getString("descrip");
+                Task t = new Task(id, descrip);
+                System.out.println(t.toString());
+            }
+
         }catch (SQLException e){
             System.out.println("*ERROR* :" + e.getMessage());
         }
